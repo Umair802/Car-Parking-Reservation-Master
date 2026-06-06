@@ -1,3 +1,52 @@
+**Project**
+- **Name:** Park Buddy — Car parking reservation (Next.js + MongoDB)
+
+**Prerequisites**
+- **Node:** Recommended Node 18 or 20. If using Node 25+, see Node note below.
+- **Package manager:** Yarn v1 (project is Yarn-first, `yarn.lock` present).
+
+**Quick Start (local)**
+- **Install deps:** `yarn install`
+- **Run dev:** `yarn dev` (scripts set `NODE_OPTIONS=--no-experimental-webstorage` on Windows)
+- **Build production:** `yarn build`
+- **Start production:** `yarn start`
+
+**Environment variables**
+- **MONGODB_URI** — MongoDB connection string (required)
+- **JWT_SECRET** — Secret used for signing JWTs (required)
+- **NEXT_PUBLIC_API_BASE_URL** — Optional base URL for client API calls (defaults to `/api`)
+
+Create a `.env` file at the project root with these values for local development. Example:
+
+```
+MONGODB_URI=mongodb://localhost:27017
+JWT_SECRET=your_secret_here
+NEXT_PUBLIC_API_BASE_URL="/api"
+```
+
+**Node 25 Web Storage note**
+- Node 25 introduced experimental Web Storage which can expose a non-browser `localStorage` during SSR and break Next.js apps. This repository's `package.json` dev/start scripts include `NODE_OPTIONS=--no-experimental-webstorage` on Windows to disable it locally. If you use Node 25 in other environments, either:
+  - Use Node 18 or 20 (recommended), or
+  - Ensure `NODE_OPTIONS=--no-experimental-webstorage` is set in your environment.
+
+**Vercel deployment (recommended)**
+1. Connect your GitHub repository to Vercel.
+2. In Project Settings → Environment Variables, add the same variables listed above (`MONGODB_URI`, `JWT_SECRET`, `NEXT_PUBLIC_API_BASE_URL`).
+3. Build Command: `yarn build`
+4. Output Directory: (leave as default for Next.js)
+5. (Optional) Set Node Version: Choose Node 20 in Vercel settings if available. If your Vercel instance uses Node 25, set `NODE_OPTIONS=--no-experimental-webstorage` in Vercel's Environment Variables to disable Web Storage.
+
+**Repository notes**
+- Project uses Yarn (remove `package-lock.json` to avoid mixed lockfiles).
+- Client-only UI pieces that require browser APIs are marked with `"use client"` where necessary.
+
+**Where to look in the code**
+- API routes: [src/app/api](src/app/api)
+- DB connector: [src/lib/db.ts](src/lib/db.ts#L1-L20)
+- Auth helpers: [src/lib/auth.ts](src/lib/auth.ts#L1-L40)
+- Main app entry: [src/app/layout.tsx](src/app/layout.tsx#L1-L40)
+
+If you want, I can commit this README and push the change, then walk you through connecting the repo to Vercel or deploying via the Vercel CLI.
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
