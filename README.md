@@ -19,10 +19,11 @@
 Create a `.env` file at the project root with these values for local development. Example:
 
 ```
-MONGODB_URI=mongodb://localhost:27017
+MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_here
 NEXT_PUBLIC_API_BASE_URL="/api"
 ```
+Do not commit this file or any secrets to the repository. The project ignores `.env` files by default.
 
 **Node 25 Web Storage note**
 - Node 25 introduced experimental Web Storage which can expose a non-browser `localStorage` during SSR and break Next.js apps. This repository's `package.json` dev/start scripts include `NODE_OPTIONS=--no-experimental-webstorage` on Windows to disable it locally. If you use Node 25 in other environments, either:
