@@ -2,6 +2,9 @@
   "name": "vehicle-parking-reservation",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "set NODE_OPTIONS=--no-experimental-webstorage&& next dev --turbopack",
     "build": "next build",
