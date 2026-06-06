@@ -1,3 +1,5 @@
+"use client";
+
 import { DataGrid, GridColDef, GridPaginationModel } from "@mui/x-data-grid";
 import { useState } from "react";
 
