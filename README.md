@@ -36,6 +36,10 @@ NEXT_PUBLIC_API_BASE_URL="/api"
 4. Output Directory: (leave as default for Next.js)
 5. (Optional) Set Node Version: Choose Node 20 in Vercel settings if available. If your Vercel instance uses Node 25, set `NODE_OPTIONS=--no-experimental-webstorage` in Vercel's Environment Variables to disable Web Storage.
 
+**Live demo**
+- Production URL: https://car-parking-reservation-master.vercel.app
+
+
 **Repository notes**
 - Project uses Yarn (remove `package-lock.json` to avoid mixed lockfiles).
 - Client-only UI pieces that require browser APIs are marked with `"use client"` where necessary.
