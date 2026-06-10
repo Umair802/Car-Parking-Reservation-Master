@@ -1,8 +1,21 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const rawBaseURL = process.env.NEXT_PUBLIC_API_BASE_URL?.trim() || "";
+
+const normalizedBaseURL = (() => {
+  if (!rawBaseURL) return "/api";
+
+  // Keep absolute URLs as-is, otherwise force a leading slash for relative API paths.
+  if (rawBaseURL.startsWith("http://") || rawBaseURL.startsWith("https://")) {
+    return rawBaseURL.replace(/\/$/, "");
+  }
+
+  return `/${rawBaseURL.replace(/^\/+/, "").replace(/\/$/, "")}`;
+})();
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "", // optional, if using env
+  baseURL: normalizedBaseURL,
   headers: {
     "Content-Type": "application/json",
   },

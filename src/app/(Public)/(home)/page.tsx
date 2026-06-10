@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Image from "next/image";
+import Link from "next/link";
 import About from "../about/page";
 import WhyChooseUs from "../why-us/page";
 import Pricing from "../pricing/page";
@@ -28,9 +29,12 @@ export default function Home() {
               spot instantly from the comfort of your home or on the go.
             </p>
             <div className="mt-8 md:text-left text-center">
-              <button className="bg-orange-400 hover:bg-orange-600 px-6 py-3 rounded-lg font-bold text-white transition duration-300">
+              <Link
+                href="/parkings"
+                className="inline-block bg-orange-400 hover:bg-orange-600 px-6 py-3 rounded-lg font-bold text-white transition duration-300"
+              >
                 Book Now
-              </button>
+              </Link>
             </div>
           </div>
 

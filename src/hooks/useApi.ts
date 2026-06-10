@@ -1,12 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-
-const UNVERIFIED_MESSAGE = "User is not verified";
 
 interface Props {
   initailLoading?: boolean;
@@ -14,7 +10,6 @@ interface Props {
 }
 
 export const useApi = ({ initailLoading, notify }: Props = {}) => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(initailLoading);
   const [error, setError] = useState(null);
 
@@ -35,7 +30,7 @@ export const useApi = ({ initailLoading, notify }: Props = {}) => {
     } catch (error: any) {
       setIsLoading(false);
 
-      if (error.response.status == 401) {
+      if (error?.response?.status === 401) {
         toast.error(
           error?.response?.data?.message || "user session has expired"
         );
