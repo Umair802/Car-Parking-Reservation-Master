@@ -63,7 +63,7 @@ export default function Home() {
       <Pricing />
 
       {/* Testimonials Section */}
-      <TestimonialPage className="!flex xl:!flex-row !flex-col !items-center !gap-3" />
+      <TestimonialPage className="xl:grid-cols-3" />
 
       {/* Contact Section */}
       <Contact />

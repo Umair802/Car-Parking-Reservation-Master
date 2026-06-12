@@ -40,7 +40,7 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto max-w-[650px]">
+    <form onSubmit={handleSubmit} className="mx-auto max-w-162.5">
       <p className="mb-5 text-gray-800 text-center">
         Enter your credentails to login to your account
       </p>
