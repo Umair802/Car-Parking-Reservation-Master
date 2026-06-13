@@ -37,6 +37,17 @@ Do not commit this file or any secrets to the repository. The project ignores `.
 4. Output Directory: (leave as default for Next.js)
 5. (Optional) Set Node Version: Choose Node 20 in Vercel settings if available. If your Vercel instance uses Node 25, set `NODE_OPTIONS=--no-experimental-webstorage` in Vercel's Environment Variables to disable Web Storage.
 
+**Create an admin account**
+1. Sign up with the user you want to promote, or use an existing user account.
+2. Set `MONGODB_URI` in your terminal to the same database used by the app.
+3. Run:
+
+```bash
+yarn make-admin your-email@example.com
+```
+
+4. Log out, log back in, and open `/dashboard` or `/users`. The admin menu will appear only for `admin` users.
+
 **Live demo**
 - Production URL: https://car-parking-reservation-master.vercel.app
 

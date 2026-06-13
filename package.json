@@ -9,7 +9,8 @@
     "dev": "set NODE_OPTIONS=--no-experimental-webstorage&& next dev --turbopack",
     "build": "next build",
     "start": "set NODE_OPTIONS=--no-experimental-webstorage&& next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "make-admin": "node scripts/make-admin.cjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
