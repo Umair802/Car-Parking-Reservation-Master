@@ -15,18 +15,20 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch data for the admin dashboard
-        const usersRes = await api.get("/user");
         const bookingsRes = await api.get("/parking");
         const paymentsRes = await api.get("/payment");
 
-        setTotalUsers(usersRes.data.length);
         setTotalBookings(bookingsRes.data.length);
         setTotalPayments(
           paymentsRes.data
             .reduce((sum, payment) => sum + payment.amount, 0)
             .toFixed(2)
         );
+
+        if (user?.role === "admin") {
+          const usersRes = await api.get("/user");
+          setTotalUsers(usersRes.data.length);
+        }
       } catch (error) {
         toast.error(error.response.data.message);
         console.error(error);

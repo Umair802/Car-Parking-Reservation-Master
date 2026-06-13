@@ -7,10 +7,21 @@ export async function GET(req) {
   try {
     await connectDB();
 
-    let users;
+    const authResult = await validateJwtHeaderAndDecode(req, NextResponse);
+    if (!(authResult as any)?.user) {
+      return authResult as any;
+    }
 
-    // Fetch users that are not admins
-    users = await User.find({ role: { $ne: "admin" } }); // $ne means "not equal"
+    const { user } = authResult as any;
+
+    if (user.role !== "admin") {
+      return NextResponse.json(
+        { message: "Forbidden: admin access required" },
+        { status: 403 }
+      );
+    }
+
+    const users = await User.find({ role: { $ne: "admin" } }); // $ne means "not equal"
 
     return NextResponse.json(users);
   } catch (err) {
